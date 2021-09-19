@@ -16,6 +16,7 @@ class GetDataToPub:
         self.publisher = pubsub_v1.PublisherClient()
         self.topic_path = self.publisher.topic_path(self.project_id, self.topic_id)
 
+    #get the data from API
     def get_currency_rate(self, currency):
         query = self.base_url + '?access_key=7d30f923cde87261ddc8b8c2acfa5bb4&symbols=%s' % (currency)
         try:
@@ -26,8 +27,9 @@ class GetDataToPub:
                 response = 'N/A'
                 return response
             else:
+                #convert it to Json
                 rates = response.json()
-                print(rates)
+                #print(rates)
                 rate_in_currency = rates
                 return rate_in_currency
         except requests.ConnectionError as error:
@@ -56,15 +58,16 @@ class GetDataToPub:
 
 def getAndPublish():
 
-    print("Hello ashu")
+    
     obj = GetDataToPub()
     result = []
+    #loop over the currencies which you are interested in.
     for currency in ['GBP', 'USD', 'EUR']:
         rate = obj.get_currency_rate(currency)
         result.append(rate)
         sleep(5)
 
-    print(result)
+    #print(result)
     obj.publish_to_topic(result)
 
     # Wait for all the publish futures to resolve before exiting.
