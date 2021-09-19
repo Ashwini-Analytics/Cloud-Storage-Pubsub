@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: egen-capstone-app
-        # Replace $LOCATION with your Artifact Registry location (e.g., us-west2).
+        # Replace $LOCATION with your Artifact Registry location (e.g., us-west1).
         # Replace $GCLOUD_PROJECT with your project ID.
         image: us-west2-docker.pkg.dev/capstone1-project-326220/capstone-repo/egen-capstone2:latest
         # This app listens on port 8080 for web traffic by default.
