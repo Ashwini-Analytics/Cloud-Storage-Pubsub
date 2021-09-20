@@ -67,6 +67,8 @@ gcloud builds submit \
 gcloud container clusters create egen-cluster  \
     --zone us-west2
 ```
+##### Connect to GKE cluster
+
 #### Verify that you have access to the cluster.
 ``` bash
 kubectl get nodes
